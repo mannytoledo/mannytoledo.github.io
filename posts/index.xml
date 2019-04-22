@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Manny Toledo</title>
-    <link>https://mtldo.com/</link>
-    <description>Recent content on Manny Toledo</description>
+    <title>Posts on Manny Toledo</title>
+    <link>https://mtldo.com/posts/</link>
+    <description>Recent content in Posts on Manny Toledo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 16 Nov 2015 18:48:32 -0500</lastBuildDate>
     
-	<atom:link href="https://mtldo.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mtldo.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,24 +18,6 @@
       
       <guid>https://mtldo.com/posts/tweaking_terminal_input_from_tmux/</guid>
       <description>Ever since I upgraded to Mavericks my Neovim experience in tmux had been less than ideal. It was the oddest behavior and so minor I told myself I could deal with it. I told myself it wasn’t so bad for a long while. For reasons beyond my understanding, I could no longer use my ^H key to move to the left pane in Neovim. I could ^L to go right, ^J for the pane below, or even ^K for the pane above.</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>https://mtldo.com/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mtldo.com/about/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>https://mtldo.com/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mtldo.com/contact/</guid>
-      <description>Follow me, @mtldo.</description>
     </item>
     
   </channel>

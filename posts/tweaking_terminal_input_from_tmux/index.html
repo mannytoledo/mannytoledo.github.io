@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Manny Toledo">
+    <meta name="description" content="Manny Toledo&#39;s personal website">
+    <meta name="keywords" content="blog,developer,engineer,management,leadership,software,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tweaking Terminal Input From Tmux"/>
+<meta name="twitter:description" content="Ever since I upgraded to Mavericks my Neovim experience in tmux had been less than ideal. It was the oddest behavior and so minor I told myself I could deal with it. I told myself it wasn’t so bad for a long while. For reasons beyond my understanding, I could no longer use my ^H key to move to the left pane in Neovim. I could ^L to go right, ^J for the pane below, or even ^K for the pane above."/>
+
+    <meta property="og:title" content="Tweaking Terminal Input From Tmux" />
+<meta property="og:description" content="Ever since I upgraded to Mavericks my Neovim experience in tmux had been less than ideal. It was the oddest behavior and so minor I told myself I could deal with it. I told myself it wasn’t so bad for a long while. For reasons beyond my understanding, I could no longer use my ^H key to move to the left pane in Neovim. I could ^L to go right, ^J for the pane below, or even ^K for the pane above." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mtldo.com/posts/tweaking_terminal_input_from_tmux/" /><meta property="article:published_time" content="2015-11-16T18:48:32-05:00"/>
+<meta property="article:modified_time" content="2015-11-16T18:48:32-05:00"/>
+
+
+    
+      <base href="https://mtldo.com/posts/tweaking_terminal_input_from_tmux/">
+    
+    <title>
+  Tweaking Terminal Input From Tmux · Manny Toledo
+</title>
+
+    
+      <link rel="canonical" href="https://mtldo.com/posts/tweaking_terminal_input_from_tmux/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mtldo.com/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://mtldo.com/static/css/custom.css">
+    
+
+    <link rel="icon" type="image/png" href="https://mtldo.com/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mtldo.com/img/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.52" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mtldo.com">
+      Manny Toledo
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mtldo.com/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mtldo.com/contact/">Contact</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Tweaking Terminal Input From Tmux</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2015-11-16T18:48:32-05:00'>
+                November 16, 2015
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              3 minutes read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://mtldo.com/tags/tmux/">tmux</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        <p>Ever since I upgraded to Mavericks my Neovim experience in tmux had been less
+than ideal. It was the oddest behavior and so minor I told myself I could deal
+with it. I told myself it wasn’t so bad for a long while. For reasons beyond my
+understanding, I could no longer use my <code>^H</code> key to move to the left pane in
+Neovim. I could <code>^L</code> to go right, <code>^J</code> for the pane below, or even <code>^K</code> for the pane
+above. Not having changed anything in my nvimrc I new it had to be something in
+the system that changed. The upgrade also required that I recompile Neovim,
+maybe that was the culprit.  Fast forward to last month, I finally made time to
+dig into this once and for all. No longer would I ^L until I circled all the
+way around. Unfortunately my Google searches only brought me down the same
+paths I’d travelled before. Heartbroken, I decided to watch a Youtube video on
+turning “Vim and Tmux into and IDE Like Environment” to seek inspiration. Mr.
+ColbyCheeze gave a pretty good walk through of his vimrc. I decided to get
+a closer look when all of a sudden there it was, a link to the Neovim issue
+that had slowly been torturing me.  It seems that terminfo can’t be trusted. It
+turns out that <code>^H</code>registers as backspace, <BS> in terminals in OSX and
+sometimes Arch Linux. You can investigate this yourself by running ~$ infocmp
+$TERM|grep kbs This will print out the key descriptions filtering for the kbs
+entry. You might see that it has ^H listed for kbs. This is the backspace key
+description. First fix I saw on the issue was too heavy handed, totally
+destroying the use of backspace.  if has(‘nvim’) nmap <BS> <C-W>h endif
+Overriding the terminal setting seemed like a better option. After all, if the
+terminal was wrong why not correct it.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~$ infocmp $TERM | sed ‘s/kbs=^[hH]/kbs=\\177/’ &gt; $TERM.ti
+~$ tic $TERM.ti</pre></div>
+<p>This loaded up the new values in the terminal correctly but still didn&rsquo;t change
+the behavior of Neovim whether I was using tmux or not. A better approach was
+to have the terminal send appropriate CSI codes for special key combinations.
+There is a way to do this in iTerm2.</p>
+
+<ol>
+<li>iTerm2 -&gt; Preferences -&gt; Keys ( or Cmd + , )</li>
+<li>Press +</li>
+<li>Press Ctrl+H as Keyboard Shortcut</li>
+<li>Choose Send Escape Sequence as Action</li>
+<li>Type [104;5u for Esc+</li>
+</ol>
+
+<p>This worked immediately until I got into Tmux. It would print the literal
+104;5u every time. To get this to work in tmux I replaced my tmux pane left
+command with this bind -n C-h if-shell “$is_vim” “send-keys Escape ‘[104;5u’”
+“select-pane -L”
+Here I am sending the escape sequence instead of C-h which is interpreted
+correctly by Neovim and doesn’t force me to change settings for iterm2 across
+the board.  I rarely use Neovim outside of tmux and haven’t felt a need for
+a solution that works with and without tmux. It’s fairly easy to swap profiles
+in iTerm2 to solve for those needs. I hope this helps some of you who might
+have also gotten stuck on this issue.</p>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2019
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-355401-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+
+</html>
