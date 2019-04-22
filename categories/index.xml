@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Manny Toledo</title>
-    <link>http://mtldo.com/categories/</link>
+    <link>https://mtldo.com/categories/</link>
     <description>Recent content in Categories on Manny Toledo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	<atom:link href="http://mtldo.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mtldo.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
